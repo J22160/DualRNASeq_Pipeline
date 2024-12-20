@@ -61,7 +61,7 @@ Bowtie2_alignment_pathogen:
 
 # ======================= Kraken2 Reference Database ===============================
 kraken2:
-    database: "config/minikraken2_v2_8GB_201904_UPDATE"       # Path to Kraken2 database for contamination screening
+    database: "configs/minikraken2_v2_8GB_201904_UPDATE"       # Path to Kraken2 database for contamination screening
 
 # ==================================================================================
 
