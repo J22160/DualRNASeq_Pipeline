@@ -27,7 +27,7 @@ fi
 
 # Create a new conda environment for the pipeline
 echo -e "${YELLOW}Creating a conda environment for the DualRNASeq pipeline...${NC}"
-conda create --name dualrnaseq_env python3 -y
+conda create --name dualrnaseq_env python -y
 conda activate dualrnaseq_env
 
 # Install Snakemake and necessary dependencies from Conda repositories
