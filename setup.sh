@@ -47,7 +47,7 @@ snakemake --version && echo -e "${GREEN}Snakemake installed successfully.${NC}"
 
 # Download and extract Kraken2 database
 echo -e "${YELLOW}Downloading and extracting the Kraken2 database...${NC}"
-cd config
+cd configs
 wget ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken2_v2_8GB_201904_UPDATE.tgz 
 tar xzf minikraken2_v2_8GB_201904_UPDATE.tgz
 rm minikraken2_v2_8GB_201904_UPDATE.tgz  # Remove the compressed file after extraction
