@@ -8,7 +8,7 @@
 
 The DualRNASeq Analysis Pipeline is a robust bioinformatics workflow designed for the analysis of host-pathogen dual RNA sequencing (DualRNASeq) data. This pipeline processes paired-end RNA-Seq data to explore transcriptional responses in host and pathogen during infection. The workflow covers essential steps including preprocessing, alignment, contamination screening, quality control, and gene quantification. This pipeline integrates host and pathogen RNA-Seq data in a single workflow, enabling simultaneous analysis of dual transcriptional responses. Unlike traditional RNA-Seq pipelines, it includes host-pathogen interaction-specific steps such as metagenomic classification (Kraken2) and pangenomic expression analysis for bacterial strains. 
 
-With a modular structure, the pipeline ensures flexibility and scalability, allowing users to adapt it to their specific projects. Each module is implemented as a separate snakemake rules [https://snakemake.readthedocs.io/en/stable/](https://snakemake.readthedocs.io/en/stable/) for ease of maintenance and debugging, and configurations are centralized in a single `config.yaml` file.  
+With a modular structure, the pipeline ensures flexibility and scalability, allowing users to adapt it to their specific projects. Each module is implemented as a separate [snakemake](https://snakemake.readthedocs.io/en/stable/) rules for ease of maintenance and debugging, and configurations are centralized in a single [`config.yaml`](https://github.com/J22160/DualRNASeq_Pipeline/blob/b02be676643d741524527d47548fb255172ccb6f/configs/config.yaml) file.  
 
 This pipeline has been effectively utilized in a serotype 3 *Streptococcus pneumoniae* (SPN) project aimed at unraveling the complexities of host-pathogen interactions during infection. By analyzing dual RNA-Seq data from mice infected with clade I and clade II strains of serotype 3 SPN, the study identified distinct transcriptional responses in both the host and pathogen. The investigation revealed critical insights into the expression of accessory genes, patterns of transcriptional dysregulation, and clade-specific virulence factors, providing a deeper and more nuanced understanding of SPN pathogenicity.  
 
@@ -41,12 +41,11 @@ This pipeline has been effectively utilized in a serotype 3 *Streptococcus pneum
 
 ### **2. Clone the Repository**  
 ```bash  
-git clone <repository_url>  
-cd project_root  
+git clone <repository_url>   
 ```  
 
 ### **3. Configure the Pipeline**  
-Edit the `config/config.yaml` file to specify:  
+Edit the `configs/config.yaml` file to specify:  
 - Paths to input data, reference files and specific parameters for sequence alignment and gene quantification.  
  
 ### **4. Run the `setup.sh` Script**  
@@ -196,9 +195,9 @@ project_root/
 
 For questions or support, please contact:  
 **Jash Trivedi**  
-- Email: [jashtrivedi221@gmail.com]  
-- GitHub: [https://github.com/J22160](https://github.com/J22160)  
-- LinkedIn: [https://www.linkedin.com/in/jash-trivedi-25b358191/](https://www.linkedin.com/in/jash-trivedi-25b358191/)
+- Email: jashtrivedi221@gmail.com  
+- GitHub: [J22160](https://github.com/J22160)  
+- LinkedIn: [Jash Trivedi](https://www.linkedin.com/in/jash-trivedi-25b358191/)
 ---  
 
 ## **Acknowledgments**  
