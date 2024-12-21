@@ -27,20 +27,18 @@ fi
 
 # Create a new conda environment for the pipeline
 echo -e "${YELLOW}Creating a conda environment for the DualRNASeq pipeline...${NC}"
-conda create --name dualrnaseq_env python -y
-conda activate dualrnaseq_env
-
-# Install Snakemake and necessary dependencies from Conda repositories
-echo -e "${YELLOW}Installing Snakemake and essential dependencies...${NC}"
 
 conda config --add channels r
 conda config --add channels defaults
 conda config --add channels conda-forge
 conda config --add channels bioconda
 
-conda install bioconda::snakemake
-    
-    
+echo -e "${YELLOW}Installing Snakemake and essential dependencies...${NC}"
+
+conda create --name dualrnaseq_env snakemake -y
+source activate dualrnaseq_env
+
+  
 # Verify Snakemake installation
 echo -e "${YELLOW}Verifying Snakemake installation...${NC}"
 snakemake --version && echo -e "${GREEN}Snakemake installed successfully.${NC}"
@@ -48,9 +46,9 @@ snakemake --version && echo -e "${GREEN}Snakemake installed successfully.${NC}"
 # Download and extract Kraken2 database
 echo -e "${YELLOW}Downloading and extracting the Kraken2 database...${NC}"
 cd configs
-wget ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken2_v2_8GB_201904_UPDATE.tgz 
-tar xzf minikraken2_v2_8GB_201904_UPDATE.tgz
-rm minikraken2_v2_8GB_201904_UPDATE.tgz  # Remove the compressed file after extraction
+wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20240605.tar.gz 
+tar xzf k2_standard_08gb_20240605.tar.gz
+rm k2_standard_08gb_20240605.tar.gz  # Remove the compressed file after extraction
 cd ..
 
 echo -e "${GREEN}Kraken2 database setup complete. Files are located in the 'config/' directory.${NC}"
