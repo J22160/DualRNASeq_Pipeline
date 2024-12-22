@@ -43,16 +43,6 @@ source activate dualrnaseq_env
 echo -e "${YELLOW}Verifying Snakemake installation...${NC}"
 snakemake --version && echo -e "${GREEN}Snakemake installed successfully.${NC}"
 
-# Download and extract Kraken2 database
-echo -e "${YELLOW}Downloading and extracting the Kraken2 database...${NC}"
-cd configs
-wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20240605.tar.gz 
-tar xzf k2_standard_08gb_20240605.tar.gz
-rm k2_standard_08gb_20240605.tar.gz  # Remove the compressed file after extraction
-cd ..
-
-echo -e "${GREEN}Kraken2 database setup complete. Files are located in the 'config/' directory.${NC}"
-
 
 # Step 5: Setup complete
 echo -e "${GREEN}Setup complete! The environment is ready for the DualRNASeq pipeline.${NC}"

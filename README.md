@@ -31,9 +31,10 @@ This pipeline has been effectively utilized in a serotype 3 *Streptococcus pneum
 
 ![alt text](https://github.com/J22160/RGENE/blob/ded5b0f9fd0707e31234291c1fc6e42387113883/snakemakeworkflow.png)
 
----  
 
-## **Setup and Usage**  
+---
+
+## **Setup and Usage**
 
 ### **1. Prerequisites**  
 - `Snakemake`  
@@ -41,14 +42,10 @@ This pipeline has been effectively utilized in a serotype 3 *Streptococcus pneum
 
 ### **2. Clone the Repository**  
 ```bash  
-git clone <repository_url>   
+git clone https://github.com/J22160/DualRNASeq_Pipeline.git   
 ```  
 
-### **3. Configure the Pipeline**  
-Edit the `configs/config.yaml` file to specify:  
-- Paths to input data, reference files and specific parameters for sequence alignment and gene quantification.  
- 
-### **4. Run the `setup.sh` Script**  
+### **3. Run the `setup.sh` Script**  
 Execute the setup script to install `Snakemake` and its dependencies, and to download and configure the Kraken2 database:  
 ```bash
 chmod +x setup.sh  
@@ -56,16 +53,33 @@ bash setup.sh
 ```  
 
 The script performs the following:  
-1. Installs Miniconda if not already available.  
-2. Configures a Conda environment for Snakemake.  
-3. Installs Snakemake and its dependencies into the environment.  
-4. Downloads and configure the Kraken2 database in `config/` directory
 
-### **5. Execute the Pipeline**
+1. Configures a Conda environment for Snakemake.  
+2. Installs Snakemake and its dependencies into the environment.  
+
+### **4. Download the Kraken2 Database for Bacterial Pathogen Screening**  
+To ensure accurate bacterial pathogen screening, download the Kraken2 database using the following commands:  
+```bash
+wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_08gb_20240605.tar.gz  
+tar xzf k2_standard_08gb_20240605.tar.gz  
+rm k2_standard_08gb_20240605.tar.gz  # Remove the compressed file after extraction
+```  
+- **Source:** This database is provided by the Kraken2 team and is hosted on Amazon S3.  
+- **Purpose:** The Kraken2 database enables highly efficient and accurate taxonomic classification of metagenomic reads, aiding in bacterial pathogen screening. The database contains standard references optimized for microbiological studies and integrates seamlessly with the pipeline.  
+
+After extracting the database, **update the `kraken2` directory path in `configs/config.yaml`** to point to the location where the database is saved. For example:  
+```yaml
+kraken2_db: /path/to/extracted/kraken2/database
+```  
+### **5. Configure the Pipeline**  
+Edit the `configs/config.yaml` file to specify:  
+- Paths to input data, reference files, and specific parameters for sequence alignment and gene quantification.  
+
+### **6. Execute the Pipeline**
 
 The DualRNASeq pipeline can be executed on a variety of platforms, including local machines, high-performance computing (HPC) environments, and cloud-based platforms. Below are detailed instructions for running the pipeline in different scenarios, as well as the steps for performing a dry run to validate the workflow.
 
-#### **5.1. Perform a Dry Run (Optional but Recommended)**  
+#### **6.1. Perform a Dry Run (Optional but Recommended)**  
 Before executing the pipeline, it is recommended to perform a dry run to verify the workflow without executing any tasks. This ensures that all dependencies, file paths, and configurations are correct.  
 Run the following command:  
 ```bash  
@@ -78,7 +92,7 @@ snakemake --sdm conda --cores <number_of_cores> -n
 
 ---
 
-#### **5.2. Running the Pipeline Locally**  
+#### **6.2. Running the Pipeline Locally**  
 To execute the pipeline on a local machine, use the following command:  
 ```bash  
 snakemake --sdm conda --cores <number_of_cores>  
@@ -87,7 +101,7 @@ Replace `<number_of_cores>` with the number of CPU cores you wish to allocate.
 
 ---
 
-#### **5.3. Running on an HPC Cluster**  
+#### **6.3. Running on an HPC Cluster**  
 For HPC environments, submit the pipeline as a job using a workload manager like Slurm. Here is an example Slurm submission script:
 
 ```bash  
@@ -112,7 +126,7 @@ sbatch <script_name>.sh
 
 ---
 
-#### **5.4. Running on a Cloud Platform**  
+#### **6.4. Running on a Cloud Platform**  
 On a cloud-based platform, such as AWS or Google Cloud, ensure that a virtual machine or instance is configured with the required resources (e.g., CPU, memory, disk space). Install Conda and the pipeline dependencies, then execute:  
 ```bash  
 snakemake --sdm conda --cores <number_of_cores>  
@@ -121,7 +135,7 @@ Alternatively, use a managed HPC service like AWS Batch or Google Cloud Batch wi
 
 ---
 
-#### **5.5. Additional Execution Options**  
+#### **6.5. Additional Execution Options**  
 - **Resume from an Interrupted Run:**  
   Use the `--rerun-incomplete` flag to resume from where the pipeline stopped:  
   ```bash  
