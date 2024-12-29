@@ -1,6 +1,6 @@
 # DualRNASeq Analysis Pipeline  
 
-### Author: Jash Trivedi, MS Biotechnology, University of Central Florida  
+### Author: Jash Trivedi, University of Central Florida  
 
 ---  
 
