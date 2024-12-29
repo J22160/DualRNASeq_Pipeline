@@ -95,10 +95,15 @@ snakemake --use-conda --cores <number_of_cores> -n
 #### **6.2. Running the Pipeline Locally**  
 To execute the pipeline on a local machine, use the following command:  
 ```bash  
-snakemake --sdm conda --cores <number_of_cores>  
+snakemake --use-conda --cores <number_of_cores>  
 ```  
 Replace `<number_of_cores>` with the number of CPU cores you wish to allocate.
 
+or
+
+```bash  
+snakemake --use-conda --cores <number_of_cores> --sdm conda apptainer 
+```  
 ---
 
 #### **6.3. Running on an HPC Cluster**  
@@ -117,7 +122,7 @@ For HPC environments, submit the pipeline as a job using a workload manager like
 module load conda
 conda activate dualrnaseq_env
 
-salloc -c 16 snakemake --sdm conda --cores $SLURM_NTASKS
+salloc -c 16 snakemake --use-conda --cores $SLURM_NTASKS
 ```
 Submit the script using:  
 ```bash  
@@ -129,7 +134,7 @@ sbatch <script_name>.sh
 #### **6.4. Running on a Cloud Platform**  
 On a cloud-based platform, such as AWS or Google Cloud, ensure that a virtual machine or instance is configured with the required resources (e.g., CPU, memory, disk space). Install Conda and the pipeline dependencies, then execute:  
 ```bash  
-snakemake --sdm conda --cores <number_of_cores>  
+snakemake --use-conda --cores <number_of_cores>  
 ```  
 Alternatively, use a managed HPC service like AWS Batch or Google Cloud Batch with containerized workflows.
 
@@ -139,13 +144,13 @@ Alternatively, use a managed HPC service like AWS Batch or Google Cloud Batch wi
 - **Resume from an Interrupted Run:**  
   Use the `--rerun-incomplete` flag to resume from where the pipeline stopped:  
   ```bash  
-  snakemake --sdm conda --cores <number_of_cores> --rerun-incomplete  
+  snakemake --use-conda --cores <number_of_cores> --rerun-incomplete  
   ```  
 
 - **Cluster Execution:**  
   Use the `--cluster` flag to submit jobs dynamically to a cluster:  
   ```bash  
-  snakemake --sdm conda --cores <number_of_cores> --cluster "sbatch --partition=compute --time=24:00:00"  
+  snakemake --use-conda --cores <number_of_cores> --cluster "sbatch --partition=compute --time=24:00:00"  
   ```
 
 - **Generate a DAG Visualization:**  
