@@ -83,7 +83,7 @@ The DualRNASeq pipeline can be executed on a variety of platforms, including loc
 Before executing the pipeline, it is recommended to perform a dry run to verify the workflow without executing any tasks. This ensures that all dependencies, file paths, and configurations are correct.  
 Run the following command:  
 ```bash  
-snakemake --sdm conda --cores <number_of_cores> -n  
+snakemake --use-conda --cores <number_of_cores> -n  
 ```  
 **Why is a dry run useful?**  
 - Validates the workflow configuration and rules.
