@@ -29,7 +29,7 @@ This pipeline has been effectively utilized in a serotype 3 *Streptococcus pneum
 
 ## **Dual-RNASeq Pipeline Workflow**  
 
-![alt text](https://github.com/J22160/RGENE/blob/d3de4d416b938695b735062c5a51ca5e5f48cd13/Dual%20RNA_seq.png)
+![alt text](https://github.com/J22160/RGENE/blob/bc0f30c8b8361d1f8c513b88dec9025f9b9748c3/DualRNA_Seq.jpeg.jpg)
 
 
 ---
